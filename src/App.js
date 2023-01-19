@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { incrementCounter, decrementCounter } from "./store/counter";
+import Todos from "./store/todos/Todos";
 
 function App() {
   const count = useSelector((store) => store.counter);
@@ -19,6 +20,10 @@ function App() {
       <h1>count: {count}</h1>
       <button onClick={increase}>increase</button>
       <button onClick={decrease}>decrease</button>
+      <hr />
+      <div>
+        <Todos />
+      </div>
     </div>
   );
 }
