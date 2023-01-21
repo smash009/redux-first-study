@@ -20,7 +20,10 @@ function App() {
       <h1>count: {count}</h1>
       <button onClick={increase}>increase</button>
       <button onClick={decrease}>decrease</button>
+      <br />
+      <br />
       <hr />
+      <br />
       <div>
         <Todos />
       </div>
