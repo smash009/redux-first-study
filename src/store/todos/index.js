@@ -3,6 +3,7 @@ const INSERT = "todos/INSERT";
 const TOGGLE = "todos/TOGGLE";
 const REMOVE = "todos/REMOVE";
 
+// 액션 생성 함수
 export const changeInput = (input) => ({
   type: CHANGE_INPUT,
   input,
@@ -28,6 +29,7 @@ export const remove = (id) => ({
   id,
 });
 
+// 초깃값
 const initialState = {
   input: "",
   todos: [
@@ -43,3 +45,22 @@ const initialState = {
     },
   ],
 };
+
+// 리듀서 함수
+function todos(state = initialState, action) {
+  if (action.type === CHANGE_INPUT) {
+    return {
+      ...state,
+      input: action.input,
+    };
+  } else if (action.type === INSERT) {
+    return {
+      ...state,
+      todo: state.todos.concat(action.todo),
+    };
+  }
+
+  return state;
+}
+
+export default todos;
