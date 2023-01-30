@@ -2,7 +2,7 @@ const TodoItem = ({ todo, onToggle, onRemove }) => {
   return (
     <div>
       <input type="checkbox" />
-      <span>예제 텍스트</span>
+      <span>{todo.text}</span>
       <button>삭제</button>
     </div>
   );
@@ -10,7 +10,7 @@ const TodoItem = ({ todo, onToggle, onRemove }) => {
 
 const Todos = ({
   input,
-  todo,
+  todos,
   onChangeInput,
   onInsert,
   onToggle,
@@ -21,22 +21,28 @@ const Todos = ({
     console.log(e.target.toDoInputData.value, "눌렀슈");
   };
 
+  const onChange = (e) => onChangeInput(e.target.value);
+
   return (
     <div>
       <form onSubmit={onSubmit}>
         <input
-          type="text"
+          value={input}
+          onChange={onChange}
           name="toDoInputData"
           placeholder="할 일을 입력해 주세요."
         />
         <button type="submit">등록</button>
       </form>
       <div>
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        {todos?.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onToggle={onToggle}
+            onRemove={onRemove}
+          />
+        ))}
       </div>
     </div>
   );

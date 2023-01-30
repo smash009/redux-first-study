@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { incrementCounter, decrementCounter } from "./store/counter";
-import Todos from "./store/todos/Todos";
+import TodosContainer from "./store/todos/TodosContainer";
 
 function App() {
   const count = useSelector((store) => store.counter);
@@ -25,7 +25,7 @@ function App() {
       <hr />
       <br />
       <div>
-        <Todos />
+        <TodosContainer />
       </div>
     </div>
   );

@@ -47,7 +47,7 @@ const initialState = {
 };
 
 // 리듀서 함수
-function todos(state = initialState, action) {
+function TodosReducer(state = initialState, action) {
   if (action.type === CHANGE_INPUT) {
     return {
       ...state,
@@ -58,9 +58,21 @@ function todos(state = initialState, action) {
       ...state,
       todo: state.todos.concat(action.todo),
     };
+  } else if (action.type === TOGGLE) {
+    return {
+      ...state,
+      todos: state.todos.map((todo) =>
+        todo.id === action.id ? { ...todo, done: !todo.done } : todo
+      ),
+    };
+  } else if (action.type === REMOVE) {
+    return {
+      ...state,
+      todos: state.todos.filter((todo) => todo.id !== action.id),
+    };
   }
 
   return state;
 }
 
-export default todos;
+export default TodosReducer;
