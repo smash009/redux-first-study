@@ -33,16 +33,16 @@ export const remove = (id) => ({
 const initialState = {
   input: "",
   todos: [
-    {
-      id: 1,
-      text: "리덕스 기초",
-      done: true,
-    },
-    {
-      id: 2,
-      text: "리덕스 사용",
-      done: false,
-    },
+    // {
+    //   id: 1,
+    //   text: "리덕스 기초",
+    //   done: true,
+    // },
+    // {
+    //   id: 2,
+    //   text: "리덕스 사용",
+    //   done: false,
+    // },
   ],
 };
 
@@ -56,7 +56,7 @@ function TodosReducer(state = initialState, action) {
   } else if (action.type === INSERT) {
     return {
       ...state,
-      todo: state.todos.concat(action.todo),
+      todos: state.todos.concat(action.todo),
     };
   } else if (action.type === TOGGLE) {
     return {
